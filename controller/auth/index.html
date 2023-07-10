@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login form</title>
+</head>
+<body>
+        
+
+            <input type="email" placeholder="Email" required class="email"><br/>
+            <input type="password" placeholder="Password" required class="password"><br/>
+            <input type="submit" value="Login" class="button">
+
+       
+        <script>
+
+            var button=document.querySelector(".button");
+            var myPassword=document.querySelector(".password");
+            var myEmail=document.querySelector(".email");
+         
+
+            button.addEventListener("click",()=>{
+                
+            var obj={
+                    password:myPassword.value,
+                    email:myEmail.value,
+                };
+                fetch("/api",{
+                method:"POST",
+                headers:{
+                    "Content-type":"application/json"
+                },
+                body:JSON.stringify(obj)
+                }).then((r)=>r.json()).then((response)=>console.log(response));
+
+            })
+        </script>
+</body>
+</html>
